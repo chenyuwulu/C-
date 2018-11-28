@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+.svn
+.vscode
+.exe
+package-lock.json
+node_modules
+xapi
+data/*
+!.gitkeep
