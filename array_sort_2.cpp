@@ -32,6 +32,7 @@ int main(){
 			W.insert(make_pair(task[i],i));
 		}
 	}
+	//以下两句是用于讲系统数组和用户数组里面的数值进行升序排序，sort()函数是algorithm里面的一个排序函数。
 	sort(system_task,system_task+j);
 	sort(user_task,user_task+k);
 	for(i=0;i<j;i++) {
@@ -46,9 +47,10 @@ int main(){
 		cout<<user_task[i]<<" ";
 	}
 	cout<<"-1"<<endl;
-	delete []task;
-	delete []system_task;
-	delete []user_task;
+	// delete []task;
+	// delete []system_task;
+	// delete []user_task;
+	system("pause"); //避免直接窗口闪退
 	return 0;
 }
 /*
