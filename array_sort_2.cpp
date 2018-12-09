@@ -21,27 +21,30 @@ int main(){
 	int *task= new int(n); // 创建一个新的存放整数的空间，并将初始值设定为输入的n，返回一个指向此处的地址
 	int *system_task=new int(n); // 如上
 	int *user_task=new int(n); // 如上
+	//for循环主要是用来筛选当前输入的数值是不是范围内
 	for(i=0;i<n;i++) { // 循环数组个数的次数
 		cin>>task[i]; // 输入对应的数组
 		if(task[i]<50){
 			system_task[j++]=task[i]; // 将这个数值放入系统数组里
-			W.insert(make_pair(task[i],i));
+			W.insert(make_pair(task[i],i)); // i代表的是数组对应的下标，然后将符合的数值存入W容器内。
 		}
+		//下同
 		if(task[i]>=50&&task[i]<=255){
 			user_task[k++]=task[i];
 			W.insert(make_pair(task[i],i));
 		}
 	}
-	//以下两句是用于讲系统数组和用户数组里面的数值进行升序排序，sort()函数是algorithm里面的一个排序函数。
+	//以下两句是用于将系统数组和用户数组里面的数值进行升序排序，sort()函数是algorithm里面的一个排序函数。
 	sort(system_task,system_task+j);
 	sort(user_task,user_task+k);
+	//下方的for是对系统数组的循环，最关键的是i<j，由于被排序过，所以j的值就是直接取小于50权限的数值量
 	for(i=0;i<j;i++) {
-		map <int,int>::iterator it = W.find(system_task[i]);
-		system_task[i]=it->second;
-		cout<<system_task[i]<<" ";
+		map <int,int>::iterator it = W.find(system_task[i]); //此处可以理解为将w容器内的第一个放入it这个单行容器内
+		system_task[i]=it->second; // 系统数组的放入it容器的第二列的值
+		cout<<system_task[i]<<" "; // 输出
 	}
-	cout<<"-1"<<endl;
-	for(i=0;i<k;i++) {
+	cout<<"-1"<<endl; // -1结尾输出
+	for(i=0;i<k;i++) { //如上，将用户的权限取出，输出
 		map <int,int>::iterator it = W.find(user_task[i]);
 		user_task[i]=it->second;
 		cout<<user_task[i]<<" ";
