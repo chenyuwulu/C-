@@ -24,17 +24,16 @@ outArray = {0, 123, 456, 25, 3, 5}
 #include <ctype.h>
 using namespace std;
 
-int k=0,n=0;
+int k=0,n=0; //定义k和n
 void take_num(const string strIn,int *outArray){
 	int sum=0;
-	for(int i=0;i<strIn.length();i++) {
-		if(isdigit(strIn[i])) {
+	for(int i=0;i<strIn.length();i++) { //循环字符串个数次数
+		if(isdigit(strIn[i])) { //如果当前的字符串是数值，则开始获取数值
 			sum=sum*10+strIn[i]-'0';
-			if(!isdigit(strIn[i+1]))
-			{
-				outArray[k++]=sum; 
-				n++;
-				sum=0;
+			if(!isdigit(strIn[i+1])){ //如果下一位不是数值
+				outArray[k++]=sum; //将目前获取到的数值存入数组内
+				n++; //用于记录一共有多少个数值
+				sum=0; //归零
 			}
 		}
 	}
@@ -42,14 +41,15 @@ void take_num(const string strIn,int *outArray){
 
 int main(){
 	string str;
-	//cin>>str;
+	// cin>>str; //默认从空格开始截断读取，所以为了包含带空格的字符串，用下列方法
 	getline(cin,str); //若要读入带空格的串，用getline(cin,str);替换cin>>str;
-    int *outArray = new int[str.length()];
+	int *outArray = new int[str.length()];
 	take_num(str,outArray);
-	cout<<n<<endl;
-	for(int i=0;i<k;i++){
+	cout<<n<<endl; //输出一共有多少个数值
+	for(int i=0;i<k;i++){ //循环输出当前的数组内的数值
 		cout<<outArray[i]<<" ";
   }
 	cout<<endl;
+	system("pause"); //避免直接窗口闪退
 	return 0;
 }
