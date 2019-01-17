@@ -21,5 +21,6 @@ int main()
 	int length=strFind.length(); // 获取要被替换的字符串的长度
 	strSrc.replace(i,length,strReplace); //使用函数，将从i（下标）位置开始替换，替换长度为length,替换的内容为strReplace
 	cout<<strSrc<<endl; // 输出最后替换过的字符串
+	system("pause"); //避免直接窗口闪退
 	return 0;
 }
